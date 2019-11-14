@@ -191,20 +191,20 @@ public:
 			for (auto i = 0; i < _actree.getNumChildren(); i++)
 			{
 				Identifier curNameIdenty = _actree.getChild(i).getType();
-				log("nameId");
+			/*	log("nameId");
 				log(nameId.toString().getCharPointer());
 				log("_actree.getChild(i)");
-				log(_actree.getChild(i).getType().toString().getCharPointer());
+				log(_actree.getChild(i).getType().toString().getCharPointer());*/
 				if (curNameIdenty == nameId)
 				{
-					log("find");
+					//log("find");
 					pwd = _actree.getChild(i).getProperty("pwd").toString();
 					
 					find = true;
 					break;
 				}
-				else
-					log("no find");
+				/*else
+					log("no find");*/
 			}
 			if (!find)
 				return NOT_FIND_NAME;
@@ -538,9 +538,9 @@ int main (int argc, char* argv[])
 				SheetDB::ins().init();
 			}
 	}
-	String pwd;
-	String name = "adminbz";
-	FileDB::ins().getUserPwdByName(name, pwd);
+	//String pwd;
+	//String name = "adminbz";
+	//FileDB::ins().getUserPwdByName(name, pwd);
     
 	std::thread t([]() {
 
