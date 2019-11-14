@@ -191,6 +191,10 @@ public:
 			for (auto i = 0; i < _actree.getNumChildren(); i++)
 			{
 				Identifier curNameIdenty = _actree.getChild(i).getType();
+				log("curNameIdenty");
+				log(curNameIdenty.toString().getCharPointer());
+				log("_actree.getChild(i)");
+				log(_actree.getChild(i).getType().toString().getCharPointer());
 				if (curNameIdenty == nameId)
 				{
 					pwd = _actree.getChild(i).getProperty("pwd").toString();
