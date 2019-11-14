@@ -1182,22 +1182,22 @@ Bug Fixes
 				String author;
 				String sheet;
 				auto r = SheetDB::ins().getSheetByTitle(title, author, sheet);
-				if (r == FileDB::FindEnum::TREE_INVALID)
+				if (r == SheetDB::FindEnum::TREE_INVALID)
 				{
 					setError(res, "Internal DB Error!");
 					return;
 				}
-				else if (r == FileDB::FindEnum::INVALID_PASSWORD)
+				else if (r == SheetDB::FindEnum::INVALID_PASSWORD)
 				{
 					setError(res, "Sheet length < 3?");
 					return;
 				}
-				else if (r == FileDB::FindEnum::NOT_FIND_NAME)
+				else if (r == SheetDB::FindEnum::NOT_FIND_NAME)
 				{
 					setError(res, "Title not exist!");
 					return;
 				}
-				else if (r == FileDB::FindEnum::SUCCESS)
+				else if (r == SheetDB::FindEnum::SUCCESS)
 				{
 					//
 					var errObj(new DynamicObject());
