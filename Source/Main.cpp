@@ -197,11 +197,14 @@ public:
 				log(_actree.getChild(i).getType().toString().getCharPointer());
 				if (curNameIdenty == nameId)
 				{
+					log("find");
 					pwd = _actree.getChild(i).getProperty("pwd").toString();
 					
 					find = true;
 					break;
 				}
+				else
+					log("no find");
 			}
 			if (!find)
 				return NOT_FIND_NAME;
