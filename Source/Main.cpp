@@ -89,7 +89,7 @@ bool restrictAccess(const Request& req, Response& res)
 	if (req.has_header("REMOTE_ADDR"))
 	{
 		remote_addr = req.get_header_value("REMOTE_ADDR");
-		auto& it = callmap.find(remote_addr);
+		const auto& it = callmap.find(remote_addr);
 		if (it != callmap.end())
 		{
 			if (curtime - it->second.lastCallTime < 3000)
