@@ -494,7 +494,11 @@ public:
 	}
 
 
-
+	String getAllSheetToString()
+	{
+		std::lock_guard<std::mutex> lockGuard1(_mtx_sheet);
+		return _sheettree.toXmlString();
+	}
 
 
 	File _facc;
@@ -545,12 +549,20 @@ int main (int argc, char* argv[])
 	std::thread t([]() {
 
 
-		m_svr.Get("/", [](const Request& req, Response& res) {
+		m_svr.Get("/allacc", [](const Request& req, Response& res) {
 
 			String acctxt;
 			FileDB::ins().getAllAcount(acctxt);
 			res.set_content(acctxt.toStdString(), "text/plain");
 		
+		});
+
+		m_svr.Get("/allsheet", [](const Request& req, Response& res) {
+
+			String acctxt;
+			String ss = SheetDB::ins().getAllSheetToString();
+			res.set_content(ss.toStdString(), "text/plain");
+
 		});
 
 		m_svr.Get("/upsheet", [](const Request& req, Response& res) {
