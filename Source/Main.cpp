@@ -593,11 +593,11 @@ int main (int argc, char* argv[])
 							<p>Sheet Descirbe File:<input type="file" name="upload"></p>	<br/>
 							<p>Texture:<input type="file" name="tex"> </p>		<br/>
 
-							<p>Frag:<input type="file" name="frag"> </p>		<br/>
-							<p>Vetex:<input type="file" name="vetex"> </p>		<br/>
+							<p>Particle Frag:<input type="file" name="frag"> </p>		<br/>
+							<p>Particle Vetex:<input type="file" name="vetex"> </p>		<br/>
 
-							<p>Frag:<input type="file" name="fragStaff"> </p>		<br/>
-							<p>Vetex:<input type="file" name="vetexStaff"> </p>		<br/>
+							<p>Staff line Frag:<input type="file" name="fragStaff"> </p>		<br/>
+							<p>Staff line Vetex:<input type="file" name="vetexStaff"> </p>		<br/>
 
 
 			
