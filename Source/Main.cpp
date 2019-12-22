@@ -595,6 +595,11 @@ int main (int argc, char* argv[])
 
 							<p>Frag:<input type="file" name="frag"> </p>		<br/>
 							<p>Vetex:<input type="file" name="vetex"> </p>		<br/>
+
+							<p>Frag:<input type="file" name="fragStaff"> </p>		<br/>
+							<p>Vetex:<input type="file" name="vetexStaff"> </p>		<br/>
+
+
 			
 							<p><input type="submit" value="upload"></p>	<br/>
 
@@ -823,8 +828,10 @@ Bug Fixes
 				return;
 			}
 
-			String stitle, sauthor, sinfo, sfrag, svetex;
-			if (req.has_file("title") && req.has_file("author") && req.has_file("info") && req.has_file("frag") && req.has_file("vetex") )
+			String stitle, sauthor, sinfo, sfrag, svetex, sfragStaff, svetexStaff;
+			if (req.has_file("title") && req.has_file("author") && req.has_file("info") && req.has_file("frag") && req.has_file("vetex")
+				&& req.has_file("fragStaff") && req.has_file("vetexStaff")
+				)
 			{
 				const auto& title = req.get_file_value("title");
 				stitle = req.body.substr(title.offset, title.length);
@@ -840,6 +847,12 @@ Bug Fixes
 
 				const auto& vetex = req.get_file_value("vetex");
 				svetex = req.body.substr(vetex.offset, vetex.length);
+
+				const auto& fragStaff = req.get_file_value("fragStaff");
+				sfragStaff = req.body.substr(fragStaff.offset, fragStaff.length);
+
+				const auto& vetexStaff = req.get_file_value("vetexStaff");
+				svetexStaff = req.body.substr(vetexStaff.offset, vetexStaff.length);
 
 
 			}
@@ -951,6 +964,8 @@ Bug Fixes
 						sheetBin.setProperty("sheet", sheet, nullptr);
 						sheetBin.setProperty("frag", sfrag, nullptr);
 						sheetBin.setProperty("vetex", svetex, nullptr);
+						sheetBin.setProperty("fragStaff", sfragStaff, nullptr);
+						sheetBin.setProperty("vetexStaff", svetexStaff, nullptr);
 
 						File sheetDescribePngBin = fapp.getChildFile("tex").getChildFile(stitle + ".bin");
 						if (sheetDescribePngBin.existsAsFile())
