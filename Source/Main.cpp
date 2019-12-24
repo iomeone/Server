@@ -599,7 +599,8 @@ int main (int argc, char* argv[])
 							<p>Staff line Frag:<input type="file" name="fragStaff"> </p>		<br/>
 							<p>Staff line Vetex:<input type="file" name="vetexStaff"> </p>		<br/>
 
-
+							<p>Indicator Frag:<input type="file" name="fragIndicator"> </p>		<br/>
+							<p>Indicator Vetex:<input type="file" name="vetexIndicator"> </p>		<br/>
 			
 							<p><input type="submit" value="upload"></p>	<br/>
 
@@ -828,9 +829,10 @@ Bug Fixes
 				return;
 			}
 
-			String stitle, sauthor, sinfo, sfrag, svetex, sfragStaff, svetexStaff;
+			String stitle, sauthor, sinfo, sfrag, svetex, sfragStaff, svetexStaff , sfragIndicator, svetexIndicator;
 			if (req.has_file("title") && req.has_file("author") && req.has_file("info") && req.has_file("frag") && req.has_file("vetex")
 				&& req.has_file("fragStaff") && req.has_file("vetexStaff")
+				&& req.has_file("fragIndicator") && req.has_file("vetexIndicator")
 				)
 			{
 				const auto& title = req.get_file_value("title");
@@ -853,6 +855,14 @@ Bug Fixes
 
 				const auto& vetexStaff = req.get_file_value("vetexStaff");
 				svetexStaff = req.body.substr(vetexStaff.offset, vetexStaff.length);
+
+
+				const auto& fragIndicator = req.get_file_value("fragIndicator");
+				sfragIndicator = req.body.substr(fragIndicator.offset, fragIndicator.length);
+
+				const auto& vetexIndicator = req.get_file_value("vetexIndicator");
+				svetexIndicator = req.body.substr(vetexIndicator.offset, vetexIndicator.length);
+				
 
 
 			}
@@ -966,6 +976,9 @@ Bug Fixes
 						sheetBin.setProperty("vetex", svetex, nullptr);
 						sheetBin.setProperty("fragStaff", sfragStaff, nullptr);
 						sheetBin.setProperty("vetexStaff", svetexStaff, nullptr);
+						sheetBin.setProperty("fragIndicator", sfragIndicator, nullptr);
+						sheetBin.setProperty("vetexIndicator", svetexIndicator, nullptr);
+						
 
 						File sheetDescribePngBin = fapp.getChildFile("tex").getChildFile(stitle + ".bin");
 						if (sheetDescribePngBin.existsAsFile())
@@ -1422,11 +1435,10 @@ Bug Fixes
 	});
 
 	t.detach();
-	getchar();
-	std::cout << "Server is started!" <<std::endl;
+	std::cout << "Server is started!" << std::endl;
 	while (true)
 	{
-		
+		getchar();
 		juce::Time::waitForMillisecondCounter(5000);
 	}
 
